@@ -11,7 +11,16 @@ config_version=4
 [application]
 
 config/name="Roll-Pony-Game"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
 
 [importer_defaults]
 
