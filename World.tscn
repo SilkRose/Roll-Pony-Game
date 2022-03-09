@@ -46,35 +46,35 @@ texture = ExtResource( 3 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
 polygon = PoolVector2Array( -15, 74, 65, 74, 65, 58, 81, 58, 81, 74, 97, 74, 97, 90, -15, 90 )
 
-[node name="Stone" type="Sprite" parent="."]
+[node name="Stone" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 89, 82 )
 texture = ExtResource( 6 )
 
-[node name="Stone2" type="Sprite" parent="."]
+[node name="Stone2" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 73, 82 )
 texture = ExtResource( 5 )
 
-[node name="Stone3" type="Sprite" parent="."]
+[node name="Stone3" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 73, 66 )
 texture = ExtResource( 9 )
 
-[node name="Stone4" type="Sprite" parent="."]
+[node name="Stone4" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 57, 82 )
 texture = ExtResource( 7 )
 
-[node name="Stone5" type="Sprite" parent="."]
+[node name="Stone5" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 41, 82 )
 texture = ExtResource( 4 )
 
-[node name="Stone6" type="Sprite" parent="."]
+[node name="Stone6" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 25, 82 )
 texture = ExtResource( 8 )
 
-[node name="Stone7" type="Sprite" parent="."]
+[node name="Stone7" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 9, 82 )
 texture = ExtResource( 5 )
 
-[node name="Stone8" type="Sprite" parent="."]
+[node name="Stone8" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( -7, 82 )
 texture = ExtResource( 5 )
 
