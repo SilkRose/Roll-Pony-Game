@@ -12,12 +12,7 @@ var local_hold = 0
 onready var sprite = $Playerx32
 
 func _physics_process(delta):
-	#var input_vector = Vector2.ZERO
-	#input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	#input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	#input_vector = input_vector.normalized()
 	var direction = sign(Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"))
-
 	var jumping = Input.is_action_pressed("jump")
 	var on_ground = velocity.y == 0
 	if on_ground && jumping:
@@ -31,7 +26,6 @@ func _physics_process(delta):
 	
 	local_hold -= delta
 	
-	
 	if direction > 0:
 		sprite.flip_h = false
 		$CollisionPolygon2D.scale.x = 0.8
@@ -41,8 +35,7 @@ func _physics_process(delta):
 	
 	velocity.x = int(move_toward(velocity.x, MAX_SPEED * direction, ACCELERATION * delta))
 	velocity.y = int(move_toward(velocity.y, max_fall_speed, gravity * delta))
-	#global_position.x += (velocity.x * delta)
-	#global_position.y += (velocity.y * delta)
+
 	print(velocity)
 	#if input_vector != Vector2.ZERO:
 		#velocity.x = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
