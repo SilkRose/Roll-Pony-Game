@@ -15,8 +15,10 @@ func _physics_process(delta):
 	
 	if direction > 0:
 		sprite.flip_h = false
+		$CollisionPolygon2D.scale.x = 0.8
 	elif direction < 0:
 		sprite.flip_h = true
+		$CollisionPolygon2D.scale.x = -0.8
 	
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
