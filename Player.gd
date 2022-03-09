@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
 const ACCELERATION = 800
-const MAX_SPEED = 100
-#const FRICTION = 500
+const MAX_SPEED = 75
+#const FRICTION = 800
 var velocity = Vector2.ZERO
 var gravity = 1000
-var max_fall_speed = 20
-var jump_force = -160
-var jump_hold = 0.2
+var max_fall_speed = 100
+var jump_force = -120
+var jump_hold = 0.25
 var local_hold = 0
 onready var sprite = $Playerx32
 
