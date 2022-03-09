@@ -31,7 +31,7 @@ func _physics_process(delta):
 	
 	local_hold -= delta
 	
-	print(velocity.y, on_ground)
+	
 	if direction > 0:
 		sprite.flip_h = false
 		$CollisionPolygon2D.scale.x = 0.8
@@ -39,11 +39,11 @@ func _physics_process(delta):
 		sprite.flip_h = true
 		$CollisionPolygon2D.scale.x = -0.8
 	
-	velocity.x = move_toward(velocity.x, MAX_SPEED * direction, ACCELERATION * delta)
-	velocity.y = move_toward(velocity.y, max_fall_speed, gravity * delta)
+	velocity.x = int(move_toward(velocity.x, MAX_SPEED * direction, ACCELERATION * delta))
+	velocity.y = int(move_toward(velocity.y, max_fall_speed, gravity * delta))
 	#global_position.x += (velocity.x * delta)
 	#global_position.y += (velocity.y * delta)
-	
+	print(velocity)
 	#if input_vector != Vector2.ZERO:
 		#velocity.x = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	#else:
