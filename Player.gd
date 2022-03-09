@@ -5,7 +5,7 @@ const MAX_SPEED = 100
 #const FRICTION = 500
 var velocity = Vector2.ZERO
 var gravity = 1000
-var max_fall_speed = 160
+var max_fall_speed = 20
 onready var sprite = $Playerx32
 
 func _physics_process(delta):
@@ -24,12 +24,12 @@ func _physics_process(delta):
 	
 	velocity.x = move_toward(velocity.x, MAX_SPEED * direction, ACCELERATION * delta)
 	velocity.y = move_toward(velocity.y, max_fall_speed, gravity * delta)
-	global_position.x += (velocity.x * delta)
-	global_position.y += (velocity.y * delta)
+	#global_position.x += (velocity.x * delta)
+	#global_position.y += (velocity.y * delta)
 	
 	#if input_vector != Vector2.ZERO:
 		#velocity.x = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	#else:
 		#velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
-	#velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity)
