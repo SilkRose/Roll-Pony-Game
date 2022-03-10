@@ -14,8 +14,8 @@ onready var sprite = $Playerx32
 func _physics_process(delta):
 	var direction = sign(Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"))
 	var jumping = Input.is_action_pressed("jump")
-	var on_ground = velocity.y == 0
-	if on_ground && jumping:
+	#var on_ground = velocity.y == 0
+	if is_on_floor() && jumping:
 		velocity.y = jump_force
 		local_hold = jump_hold
 	elif local_hold > 0:
@@ -41,4 +41,4 @@ func _physics_process(delta):
 	#else:
 		#velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector2(0, -1))
