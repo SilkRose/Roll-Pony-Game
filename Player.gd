@@ -36,7 +36,6 @@ func _physics_process(delta):
 	velocity.x = int(move_toward(velocity.x, MAX_SPEED * direction, ACCELERATION * delta))
 	velocity.y = int(move_toward(velocity.y, max_fall_speed, gravity * delta))
 
-	print(velocity)
 	#if input_vector != Vector2.ZERO:
 		#velocity.x = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	#else:
