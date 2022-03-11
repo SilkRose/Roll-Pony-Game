@@ -32,6 +32,7 @@ func _physics_process(delta):
 		$CollisionPolygon2D.scale.x = -0.8
 	
 	velocity.x = int(move_toward(velocity.x, MAX_SPEED * direction, ACCELERATION * delta))
-	velocity.y = int(move_toward(velocity.y, max_fall_speed, gravity * delta))
+	if !is_on_floor() && !is_on_wall():
+		velocity.y = int(move_toward(velocity.y, max_fall_speed, gravity * delta))
 
 	velocity = move_and_slide(velocity, Vector2(0, -1))
