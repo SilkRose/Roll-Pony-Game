@@ -16,6 +16,7 @@ func _physics_process(delta):
 	if is_on_floor() && jumping:
 		velocity.y = jump_force
 		local_hold = jump_hold
+		velocity.y = int(move_toward(velocity.y, max_fall_speed, gravity * delta))
 	elif local_hold > 0:
 		if jumping:
 			velocity.y = jump_force
@@ -26,10 +27,10 @@ func _physics_process(delta):
 	
 	if direction > 0:
 		sprite.flip_h = false
-		$CollisionPolygon2D.scale.x = 0.8
+		$CollisionPolygon2D.scale.x = 1
 	elif direction < 0:
 		sprite.flip_h = true
-		$CollisionPolygon2D.scale.x = -0.8
+		$CollisionPolygon2D.scale.x = -1
 	
 	velocity.x = int(move_toward(velocity.x, MAX_SPEED * direction, ACCELERATION * delta))
 	if !is_on_floor() && !is_on_wall():
