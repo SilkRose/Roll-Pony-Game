@@ -101,7 +101,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=14]
-0/name = "dirt_tilemap.png 0"
+0/name = "dirt_tilemap.png"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
@@ -177,7 +177,7 @@ format = 1
 tile_data = PoolIntArray( 196603, 0, 65536, 196604, 0, 65536, 262139, 0, 65538, 262140, 0, 1, 262141, 0, 2, 196614, 0, 0, 327675, 0, 1, 327676, 0, 65538, 327677, 0, 65536, 327678, 0, 2, 262150, 0, 65537, 262151, 0, 1, 262152, 0, 0, 262153, 0, 0, 393214, 0, 2, 393215, 0, 65537, 327680, 0, 2, 327681, 0, 2, 327682, 0, 0, 327683, 0, 0, 327684, 0, 1, 327685, 0, 0, 327686, 0, 1, 327687, 0, 65537, 393216, 0, 65537, 393217, 0, 65536, 393218, 0, 65538, 393219, 0, 65536, 393220, 0, 65538, 458754, 0, 65537, 458755, 0, 65538 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 33, 32 )
+position = Vector2( 24, 48 )
 jump_height = 34.0
 jump_time_to_peak = 0.4
 jump_time_to_descent = 0.3
