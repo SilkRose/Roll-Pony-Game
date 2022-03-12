@@ -20,6 +20,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump()
 	
+	if global_position.y > 100:
+		global_position.x = 0
+		global_position.y = 0
+	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func get_gravity() -> float:
