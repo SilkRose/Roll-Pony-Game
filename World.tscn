@@ -14,6 +14,9 @@
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 75, 45 )
+jump_height = 34.0
+jump_time_to_peak = 0.4
+jump_time_to_descent = 0.3
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 97, 74 )
