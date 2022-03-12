@@ -14,7 +14,7 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 75, 45 )
+position = Vector2( 73, 42 )
 jump_height = 34.0
 jump_time_to_peak = 0.4
 jump_time_to_descent = 0.3
