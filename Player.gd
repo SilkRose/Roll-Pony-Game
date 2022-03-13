@@ -3,7 +3,7 @@ extends KinematicBody2D
 const FLOOR = Vector2.UP
 const FLOOR_MAX_DEG = deg2rad(45)
 const SNAP_DIR = Vector2.DOWN
-const SNAP_LEN = 16
+const SNAP_LEN = 32
 
 enum {
 	normal,
@@ -74,10 +74,10 @@ func sneak_state():
 
 func get_gravity() -> float:
 	if state == normal:
-		snap_vector = Vector2.UP * 0
+		snap_vector = Vector2.ZERO
 		return jump_gravity if velocity.y < 0.0 else fall_gravity
 	else:
-		snap_vector = Vector2.UP * 0
+		snap_vector = Vector2.ZERO
 		return jump_gravity * 2 if velocity.y < 0.0 else fall_gravity
 
 func jump():
