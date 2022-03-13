@@ -11,6 +11,8 @@ enum {
 }
 
 var state = normal
+var wall_jumping = false
+var wall_jump_dir = 0
 
 export var move_speed = 80
 export var acceleration = 800
@@ -26,6 +28,8 @@ onready var sprite = $PlayerIdle
 onready var normal_collision = $NormalCollision
 onready var sprite_sneak = $PlayerSneak
 onready var sneak_collision = $SneakCollision
+onready var leftwallray = $LeftWallRay
+onready var rightwallray = $RightWallRay
 onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
@@ -46,8 +50,20 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump()
+	elif Input.is_action_just_pressed("jump") and !is_on_floor() and is_on_wall() and !wall_jumping:
+		wall_jump()
 	
-	if global_position.y > 100:
+	if wall_jumping:
+		if rightwallray.is_colliding():
+			wall_jump_dir = -60
+		elif leftwallray.is_colliding():
+			wall_jump_dir = 60
+		velocity.x = wall_jump_dir
+		if velocity.y <= -1.0:
+			wall_jumping = false
+	
+	
+	if global_position.y > 400:
 		global_position.x = 0
 		global_position.y = 0
 	
@@ -81,6 +97,10 @@ func get_gravity() -> float:
 		return jump_gravity * 2 if velocity.y < 0.0 else fall_gravity
 
 func jump():
+	velocity.y = jump_velocity
+
+func wall_jump():
+	wall_jumping = true
 	velocity.y = jump_velocity
 
 func get_input_velocity() -> float:

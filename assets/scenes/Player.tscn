@@ -35,3 +35,13 @@ visible = false
 position = Vector2( 0, 10 )
 shape = SubResource( 2 )
 disabled = true
+
+[node name="RightWallRay" type="RayCast2D" parent="."]
+position = Vector2( 0, 8 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+
+[node name="LeftWallRay" type="RayCast2D" parent="."]
+position = Vector2( 0, 8 )
+enabled = true
+cast_to = Vector2( -10, 0 )
