@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Roll-Pony-Game"
-run/main_scene="res://World.tscn"
+run/main_scene="res://assets/scenes/World.tscn"
 config/icon="res://icon.png"
 
 [display]
