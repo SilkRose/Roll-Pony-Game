@@ -1,9 +1,15 @@
 extends KinematicBody2D
 
+const FLOOR = Vector2.UP
+const FLOOR_MAX_DEG = deg2rad(45)
+const SNAP_DIR = Vector2.DOWN
+const SNAP_LEN = 16
+
 export var move_speed = 80
 export var acceleration = 800
 
 var velocity := Vector2.ZERO
+var snap_vector = SNAP_DIR * SNAP_LEN
 
 export var jump_height : float
 export var jump_time_to_peak : float
@@ -24,13 +30,11 @@ func _physics_process(delta):
 		global_position.x = 0
 		global_position.y = 0
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR, true, 4, FLOOR_MAX_DEG)
 
 func get_gravity() -> float:
-	if !is_on_floor() and !is_on_wall():
+		snap_vector = Vector2.UP * 0
 		return jump_gravity if velocity.y < 0.0 else fall_gravity
-	else:
-		 return 0.0
 
 func jump():
 	velocity.y = jump_velocity
