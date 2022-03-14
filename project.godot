@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/Mane/StateMachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/Mane/StateMachine/StateMachine.gd"
+} ]
+_global_script_class_icons={
+"State": "res://assets/icons/state.svg",
+"StateMachine": "res://assets/icons/state_machine.svg"
+}
+
 [application]
 
 config/name="Roll-Pony-Game"
