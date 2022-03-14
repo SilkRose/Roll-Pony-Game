@@ -39,6 +39,7 @@ export var jump_height : float
 export var jump_time_to_peak : float
 export var jump_time_to_descent : float
 onready var idlesprite = $PlayerIdle2
+onready var trotsprite = $PlayerTrot
 onready var normal_collision = $NormalCollision
 onready var sprite_sneak = $PlayerSneak
 onready var sneak_collision = $SneakCollision
@@ -92,6 +93,11 @@ func _physics_process(delta):
 
 func idle_state():
 	idlesprite.playing = true
+	idlesprite.visible = true
+	if get_input_velocity() != 0:
+		state = trot
+		idlesprite.playing = false
+		idlesprite.visible = false
 #	if Input.is_action_just_pressed("sneak") and state == idle:
 #		state = sneak
 #	else:
@@ -101,10 +107,17 @@ func idle_state():
 #		sneak_collision.disabled = true
 
 func trot_state():
-	pass
+	trotsprite.visible = true
+	trotsprite.playing = true
+	if velocity.x > 40 or velocity.x < -40:
+		state = gallop
+	elif velocity == Vector2.ZERO:
+		state = idle
+		trotsprite.visible = false
+		trotsprite.playing = false
 
 func gallop_state():
-	pass
+	print("gallop")
 
 func sneak_state():
 	#sprite.visible = false
