@@ -9,7 +9,7 @@ You can pass a msg to this state, every key is optional:
 """
 
 
-export var acceleration_x: = 5000.0
+export var acceleration_x: = 500.0
 
 
 func unhandled_input(event: InputEvent) -> void:
