@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Playerx32Sneak.png-470d8d284d9225dae3ef4630490afa05.stex"
+path="res://.import/stone_tilemap.png-66921fbd0a3c8fa2942dc6a6b7ec6806.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Playerx32Sneak.png"
-dest_files=[ "res://.import/Playerx32Sneak.png-470d8d284d9225dae3ef4630490afa05.stex" ]
+source_file="res://assets/tilesets/stone_tilemap.png"
+dest_files=[ "res://.import/stone_tilemap.png-66921fbd0a3c8fa2942dc6a6b7ec6806.stex" ]
 
 [params]
 

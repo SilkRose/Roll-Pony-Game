@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grass_block_tilemap.png-94806ca29a717b42caf967d268392114.stex"
+path="res://.import/playerx32.png-42fa0013d3c28493b65afd211ac3066c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/grass_block_tilemap.png"
-dest_files=[ "res://.import/grass_block_tilemap.png-94806ca29a717b42caf967d268392114.stex" ]
+source_file="res://assets/sprites/playerx32.png"
+dest_files=[ "res://.import/playerx32.png-42fa0013d3c28493b65afd211ac3066c.stex" ]
 
 [params]
 
