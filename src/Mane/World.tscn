@@ -266,9 +266,6 @@ tile_data = PoolIntArray( 131062, 0, 2, 131063, 0, 1, 131064, 0, 65536, 131065, 
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 24, 48 )
-jump_height = 34.0
-jump_time_to_peak = 0.4
-jump_time_to_descent = 0.3
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enable = true
