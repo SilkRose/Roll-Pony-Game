@@ -6,11 +6,25 @@ const SNAP_DIR = Vector2.DOWN
 const SNAP_LEN = 32
 
 enum {
-	normal,
-	sneak
+	idle,
+	idle_long
+	trot,
+	gallop,
+	sneak,
+	roll,
+	sneak_roll,
+	jump,
+	sneak_jump,
+	wall_jump,
+	wall_slide,
+	buck,
+	attack,
+	damage,
+	dead,
+	victory
 }
 
-var state = normal
+var state = idle
 var wall_jumping = false
 var wall_jump_dir = 0
 
@@ -24,7 +38,7 @@ var snap_vector = SNAP_DIR * SNAP_LEN
 export var jump_height : float
 export var jump_time_to_peak : float
 export var jump_time_to_descent : float
-onready var sprite = $PlayerIdle
+onready var idlesprite = $PlayerIdle2
 onready var normal_collision = $NormalCollision
 onready var sprite_sneak = $PlayerSneak
 onready var sneak_collision = $SneakCollision
@@ -34,16 +48,23 @@ onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * 
 onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
+
+
 func _physics_process(delta):
 	match state:
-		normal:
-			normal_state()
+		idle:
+			idle_state()
+		trot:
+			trot_state()
+		gallop:
+			gallop_state()
 		sneak:
 			sneak_state()
 	
+	
 	velocity.y += get_gravity() * delta
 	
-	if state == normal:
+	if state == idle:
 		velocity.x = move_toward(velocity.x, move_speed * get_input_velocity(), acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, sneak_speed * get_input_velocity(), sneak_accel * delta)
@@ -69,27 +90,33 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR, true, 4, FLOOR_MAX_DEG)
 
-func normal_state():
-	if Input.is_action_just_pressed("sneak") and state == normal:
-		state = sneak
-	else:
-		sprite.visible = true
-		normal_collision.disabled = false
-		sprite_sneak.visible = false
-		sneak_collision.disabled = true
+func idle_state():
+	idlesprite.playing = true
+#	if Input.is_action_just_pressed("sneak") and state == idle:
+#		state = sneak
+#	else:
+#		sprite.visible = true
+#		normal_collision.disabled = false
+#		sprite_sneak.visible = false
+#		sneak_collision.disabled = true
 
+func trot_state():
+	pass
+
+func gallop_state():
+	pass
 
 func sneak_state():
-	sprite.visible = false
+	#sprite.visible = false
 	normal_collision.disabled = true
 	sprite_sneak.visible = true
 	sneak_collision.disabled = false
 	if Input.is_action_just_pressed("sneak") and state == sneak:
-		state = normal
+		state = idle
 
 
 func get_gravity() -> float:
-	if state == normal:
+	if state == idle:
 		snap_vector = Vector2.ZERO
 		return jump_gravity if velocity.y < 0.0 else fall_gravity
 	else:
@@ -110,8 +137,8 @@ func get_input_velocity() -> float:
 
 func animate_sprite(direction):
 	if direction > 0:
-		sprite.flip_h = false
+		idlesprite.flip_h = false
 		sprite_sneak.flip_h = false
 	elif direction < 0:
-		sprite.flip_h = true
+		idlesprite.flip_h = true
 		sprite_sneak.flip_h = true
