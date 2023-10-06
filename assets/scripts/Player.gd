@@ -1,7 +1,7 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const FLOOR = Vector2.UP
-const FLOOR_MAX_DEG = deg2rad(45)
+const FLOOR_MAX_DEG = deg_to_rad(45)
 const SNAP_DIR = Vector2.DOWN
 const SNAP_LEN = 32
 
@@ -14,25 +14,24 @@ var state = normal
 var wall_jumping = false
 var wall_jump_dir = 0
 
-export var move_speed = 80
-export var acceleration = 800
+@export var move_speed = 80
+@export var acceleration = 800
 var sneak_speed = move_speed * 0.50
 var sneak_accel = acceleration * 0.75
-var velocity := Vector2.ZERO
 var snap_vector = SNAP_DIR * SNAP_LEN
 
-export var jump_height : float
-export var jump_time_to_peak : float
-export var jump_time_to_descent : float
-onready var sprite = $PlayerIdle
-onready var normal_collision = $NormalCollision
-onready var sprite_sneak = $PlayerSneak
-onready var sneak_collision = $SneakCollision
-onready var leftwallray = $LeftWallRay
-onready var rightwallray = $RightWallRay
-onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+@export var jump_height : float
+@export var jump_time_to_peak : float
+@export var jump_time_to_descent : float
+@onready var sprite = $PlayerIdle
+@onready var normal_collision = $NormalCollision
+@onready var sprite_sneak = $PlayerSneak
+@onready var sneak_collision = $SneakCollision
+@onready var leftwallray = $LeftWallRay
+@onready var rightwallray = $RightWallRay
+@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
+@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
+@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
 func _physics_process(delta):
 	match state:
@@ -67,7 +66,14 @@ func _physics_process(delta):
 		global_position.x = 0
 		global_position.y = 0
 	
-	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR, true, 4, FLOOR_MAX_DEG)
+	set_velocity(velocity)
+	# TODOConverter3To4 looks that snap in Godot 4 is float, not vector like in Godot 3 - previous value `snap_vector`
+	set_up_direction(FLOOR)
+	set_floor_stop_on_slope_enabled(true)
+	set_max_slides(4)
+	set_floor_max_angle(FLOOR_MAX_DEG)
+	move_and_slide()
+	velocity = velocity
 
 func normal_state():
 	if Input.is_action_just_pressed("sneak") and state == normal:
