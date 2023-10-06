@@ -1,3 +1,4 @@
 res://default_env.tres
 res://assets/scenes/World.tscn
 res://assets/scripts/Player.gd
+res://assets/scenes/Player.tscn
